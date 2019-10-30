@@ -1,6 +1,7 @@
 //! Common common used both by decoder and encoder
 extern crate color_quant;
 
+use std::prelude::v1::*;
 use std::borrow::Cow;
 
 /// Disposal method

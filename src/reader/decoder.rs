@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use std::cmp;
 use std::mem;
 use std::default::Default;
@@ -37,6 +38,7 @@ impl fmt::Display for DecodingError {
 }
 
 impl error::Error for DecodingError {
+    #[allow(deprecated)]
     fn description(&self) -> &str {
         match *self {
             DecodingError::Format(ref d) => d,
@@ -45,7 +47,7 @@ impl error::Error for DecodingError {
         }
     }
 
-    fn cause(&self) -> Option<&error::Error> {
+    fn cause(&self) -> Option<&dyn error::Error> {
         match *self {
             DecodingError::Io(ref err) => Some(err),
             _ => None,
